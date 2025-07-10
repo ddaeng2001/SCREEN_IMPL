@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            height: 100px;
+            margin: 10px;
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--px : 고정크기 ->반응처리시의 역할은 적절하지 X-->
+    <!--브라우저 크기에 상관 없이!-->
+    <div style="width:500px;">HELLO WORLD</div>
+    <div style="width:50%;">
+        <div style="width:300px;background-color:royalblue"></div>
+    </div>
+    <!--% : 가변크기, 상위태그를 기준-->
+    <div style="width:50%;">
+        <div style="width:50%;background-color:royalblue"></div>
+    </div>
+    <!--vw(뷰포트 기준 너비),vw(뷰포트 기준 높이) : 가변크기, 뷰포트를 기준-->
+    <!--뷰포트 설정하면 부모와 상관없이 가변적인 길이가 늘어날 수 있음-->
+    <div style="width:50%;">
+        <div style="width:50%;background-color:royalblue"></div>
+    </div>
+</body>
+
+</html>

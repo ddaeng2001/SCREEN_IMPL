@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{box-sizing: border-box;}
+        body{margin:0;padding:0;}
+        .wrapper{height:3000px;} /*body보다 더 높은 높이를 지녀서 스크롤이 생성됨*/
+        .bg{
+            position:absolute;
+            top:500px;
+            width:100%;
+            height:400px;
+            background-color: orange;
+            /*배경이미지 지정*/
+            background-image:url('https://cdn.pixabay.com/photo/2025/05/14/10/09/bridge-9599215_1280.jpg');
+            /*이미지 사이즈*/
+            /* background-size:contain;
+            background-repeat: no-repeat; /*repeat을 하지 않겠다. */
+                                           /* x,y축으로 맞출 수 있음*/
+            /*cover : 전체 채우기 contain : 이미지 비율에 맞게 채우기*/
+            /* 해당 영역 전체를 빈틈없이 보여줌 //해상도는 망가짐 : cover
+            비율(해상도)을 유지하는 것 : contain
+            but 남는 부분은 반복적으로(repeat) 보여줌 */
+            /* background-position: center; 위치 지정 */
+
+            /*뒷배경을 뒤에 붙이고 스크롤에 따라서 해당 위치의 그림파트만 보여줌*/
+            background-size:cover;
+            background-attachment: fixed;
+            
+        
+        
+        }
+    </style>
+
+</head>
+<body>
+
+    <!--Emmet : .wrapper> .bg(==background)-->
+    <div class="wrapper">
+        <div class="bg"></div>
+    </div>
+    
+
+
+
+
+</body>
+</html>
