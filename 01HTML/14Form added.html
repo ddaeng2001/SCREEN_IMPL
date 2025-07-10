@@ -8,7 +8,7 @@
     <style>
         /*common.css*/ /*==문서가 너무 길어지면 따로 빼서 작업함*/
         *{ /*-->공통영역에 대한 설정*/
-            font-size:0.9rem; /*브라우저의 폰트 사이즈를 그대로 따른다. */
+            font-size:0.9rem; /*브라우저의 폰트 사이즈 0.9배로 글자 크기 */
             box-sizing: border-box; /*패딩이 늘어나더라도 전체 크기 고정*/
         }
         a{
@@ -16,14 +16,15 @@
             color:black;
         }           
         /*form안에 넣어도 상관없지만 Atag를 다른 곳에 넣어야 할 때는 또 따로 만들어야하기 때문에
+                                            ex> 로그인 버튼 head부분에 삽입
           처음부터 따로 빼서 Atag만 만드는 것이 더 효율적*/
 
-        body{ /*보여지는 뷰포트 영역*/
+        body{ /*==보여지는 뷰포트 영역*/
             margin:0;
             padding:0;
         }
         .btn{
-            min-width:85px;     /*글자크기만큼 늘어남*/
+            min-width:60px;     /*글자크기만큼 늘어남*/
             height:35px;
             line-height:35px;   
             border:1px solid gray;
@@ -43,6 +44,7 @@
             width:375px;
             border:1px solid;
             margin: 0 auto;            /*브라우저 크기가 어떻든 늘 가운데에 위치*/
+            /*상하여백 0 좌우여백 auto(남은 공간을 자동으로 배정)*/
             padding:5px; /*기본 여백을 주고 싶으면 폼 안쪽으로 여백을 줄 수 있음*/
         }
         form>.row{ /*CSS에서 클래스를 표시할 때 '.'사용*/
@@ -186,7 +188,7 @@
 
         <div class="row">
             <input class="btn btn-submit" type="submit" value="회원가입"/>
-                         <!--btn의 공통적 속성은 겹치지 않는 선에서 지님
+                         <!--btn의 공통적 속성을 겹치지 않는 선에서 지님
                              btn-submit으로 회원가입 버튼의 세부적인 속성을 스타일링 -->
             <!--submit :사용자가 버튼을 눌렀을 때 폼에 입력된 데이터가 서버로 전송됨-->
             <!--value : 버튼에 표시될 텍스트를 정해줄 속성-->

@@ -44,8 +44,14 @@
 
 
     <form action="/test.jsp" method="post">
-        <div class="row m-2">
+        <div class="row m-2">             
+
             <label class="col-3 form-label">아이디</label> <!--col-3: 3개의 col을 쓰겠다. 나머지col은 12-3=9개를 자동으로 나눠서 씀-->
+            <!--그리드
+            : label과 input에 Bootstrap의 row/col 클래스를 적용해서 
+	          나란히 정렬하는 것 ==Bootstrap 그리드 시스템
+            : 원래 블럭형인 div태그에 class="row"와 class="col"를 삽입해
+              인라인형으로 변환시켜줌-->
             <input  class="col form-control" name="userid" type="text" /> 
             <a  class="col-3 ms-2 btn btn-outline-primary" href="javascript:void(0)">중복확인</a>
         </div>
@@ -107,7 +113,7 @@
         <div class="row m-2">
             <label class="col-3 form-label">생년월일</label>
             <input  class="col-1 form-check-input p-0 me-1" name="birth" type="radio" /> <label class="col-1 ps-0">양</label>
-                                                <!--padding값 0으로                                           패딩없애기-->
+                                                <!--padding값 0으로  for checkbox 모양을 타원이 아닌 원으로                                         패딩없애기-->
                                                      <!--me-1:오른쪽으로 살짝 띄우기-->
             <input class="col-1 form-check-input p-0 me-1" name="birth" type="radio" /><label class="col-1 ps-0">음</label>
         </div>
