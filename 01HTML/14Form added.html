@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /*common.css*/ /*==문서가 너무 길어지면 따로 빼서 작업함*/
+        *{ /*-->공통영역에 대한 설정*/
+            font-size:0.9rem; /*브라우저의 폰트 사이즈를 그대로 따른다. */
+            box-sizing: border-box; /*패딩이 늘어나더라도 전체 크기 고정*/
+        }
+        a{
+            text-decoration: none;
+            color:black;
+        }           
+        /*form안에 넣어도 상관없지만 Atag를 다른 곳에 넣어야 할 때는 또 따로 만들어야하기 때문에
+          처음부터 따로 빼서 Atag만 만드는 것이 더 효율적*/
+
+        body{ /*보여지는 뷰포트 영역*/
+            margin:0;
+            padding:0;
+        }
+        .btn{
+            min-width:85px;     /*글자크기만큼 늘어남*/
+            height:35px;
+            line-height:35px;   
+            border:1px solid gray;
+            text-align: center; /*내부에 있는 컨텐츠 수평배치*/
+
+        }
+        .btn-submit{ /*btn-submit으로 회원가입만의 속성을 스타일링*/
+            width:100%;
+            border:0;
+            color:white;
+            background-color:royalblue;
+
+        }
+
+        /*form*/
+        form{
+            width:375px;
+            border:1px solid;
+            margin: 0 auto;            /*브라우저 크기가 어떻든 늘 가운데에 위치*/
+            padding:5px; /*기본 여백을 주고 싶으면 폼 안쪽으로 여백을 줄 수 있음*/
+        }
+        form>.row{ /*CSS에서 클래스를 표시할 때 '.'사용*/
+            margin:10px;
+            height:35px;
+            display:flex; /*블럭형이든 라인형이든 수평배치를 할 수 있음*/
+            justify-content: left; /*수평배치 사이사이의 여백(간격)을 설정하는 것*/
+            align-items: center; /*하위에 있는 아이템들 간의 수직 배치에 대해 설정하는 것*/
+                                   /*ex> 아이디, 입력칸, 중복확인*/
+            gap:5px;               /*행안의 아이템들 간의 공백을 주는 것*/
+
+        } 
+        form>.row>label{ /*label ==제목*/
+            display:block;
+            min-width:85px; /*label은 인라인형이기 떄문에 잡히지 않지만 block형으로 바꾸면 적용됨*/
+            border:1px solid;
+            height:100%;
+            line-height:35px; /*label안에 있는 컨텐츠를 수직배치*/
+        
+
+        }
+        form>.row>input[type="text"], /*안에 있는 속성을 선택할 때는 []사용함,는 여러개의 선택자들을 동시에 선택가능*/ 
+        form>.row>input[type="password"],
+        form>.row>select
+        {
+            width:100%;
+            height:100%;    /*label(부모)이 가진 height를 그대로 따름*/
+
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+
+     <form action="/test.jsp" method="post">
+        <div class="row"> <!--행간 규칙을 공통적으로 적용시키기 위해 class-->
+            <h1>회원가입</h1>
+        </div>
+         <div class="row"> <!--행간 구별을 위해서-->
+            <label>아이디</label>
+            <input name="userid" type="text"/> 
+            <a class="btn" href="javascript:void(0)">중복확인</a> <!--a태그들을 버튼이라 생각하고 class를 잡아서 스타일 공통적용-->
+        </div>
+         <div  class="row"> <!--div : 행간 구별을 위해서-->
+            <label>비밀번호</label>
+            <input name ="password" type="password"/> <!--type="password"면 가려짐-->
+            <!-- label과 input은 인라인형 블록 -->
+        </div>
+         <div class="row"> 
+            <label>비밀번호 확인</label>
+            <input name ="re-password" type="password"/>
+        </div>
+         <div class="row"> 
+            <label>이름</label>
+            <input name ="username" type="text"/>
+        </div>
+         <div class="row"> 
+            <label>우편번호</label>
+            <input name ="zipcode" type="text"/>
+            <a  class="btn" href="javascript:void(0)">검색</a> <!--우편번호를 검색해야하기에-->
+        </div>
+         <div class="row"> 
+            <label>기본주소</label>
+            <input name ="addr1" type="text"/>
+        </div>
+         <div class="row"> 
+            <label>상세주소</label>
+            <input name ="addr2" type="text"/>
+        </div>
+         <div class="row"> 
+            <label>휴대전화</label>
+            <select> <!--select: 드랍다운 즉, 선택할 수 있는 것으로 바뀜-->
+                <option value="" selected>010</option>
+                                <!--selected : 기본값으로 설정-->
+                <option value="">011</option>
+            </select>
+            <input type="text"/>
+            <input type="text"/>
+        </div>
+         <div class="row"> 
+            <label>연락처</label>
+            <select> 
+                <option value="" selected>053</option>
+                <option value="">055</option>
+                <option value="">02</option>
+            </select>
+            <input type="text"/>
+            <input type="text"/>
+        </div>
+         <div class="row"> 
+            <label>이메일</label>
+            <input type="text"/>
+            <select> 
+                <option value="" selected>@naver.com</option>
+                <option value="">@gmail.com</option>
+                <option value="">@daum.net</option>
+            </select>
+        </div>
+
+        <div class="row"> 
+            <label>생년월일</label>
+            <input name ="birth" type="radio"/> 양
+                                        <!--radio : 여러 개 중 택1-->
+            <input name ="birth" type="radio"/> 음
+            <!--※radio는 동일한 name을 지님 아니면 전부 다 동시에 체크됨-->
+        </div>
+
+        <div class="row"> 
+            <select> 
+                <option value="" selected>2025</option>
+                <option value="">2024</option>
+                <option value="">2023</option>
+            </select>
+            <select> 
+                <option value="" selected>12</option>
+                <option value="">11</option>
+                <option value="">10</option>
+            </select>
+            <select> 
+                <option value="" selected>01</option>
+                <option value="">02</option>
+                <option value="">03</option>
+            </select>
+        </div>
+        <hr/>
+
+        <div class="row"> 
+            <input id ="email-recv" type="checkbox"/> 
+            <label for="email-recv">이메일 수신에 동의합니다.</label>
+            <!--a※for은 id는 이름이 동일해야함!-->
+            <!--for : 체크박스가 아닌 label부분을 클릭해도 체크가 됨-->
+        </div>
+
+        <div class="row">
+            <input id="sms-recv" type="checkbox" />
+            <label for="sms-recv">문자메시지 수신에 동의합니다.</label>
+        </div>
+
+        <div class="row">
+            <input class="btn btn-submit" type="submit" value="회원가입"/>
+                         <!--btn의 공통적 속성은 겹치지 않는 선에서 지님
+                             btn-submit으로 회원가입 버튼의 세부적인 속성을 스타일링 -->
+            <!--submit :사용자가 버튼을 눌렀을 때 폼에 입력된 데이터가 서버로 전송됨-->
+            <!--value : 버튼에 표시될 텍스트를 정해줄 속성-->
+        </div>
+        
+        
+
+     </form>
+
+    
+</body>
+</html>
