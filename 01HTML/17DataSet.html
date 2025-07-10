@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div data-username="user1234" data-a="AAA">계정명</div>
+    <div data-address="대구">주소</div>
+    <div data-phone="01022223333">연락처</div>
+    <!-- HTML내부 코드에 백엔드에 전달할 예정인 정보를 JS에 꺼내서 서버로 전달 -->
+
+
+    <script>
+        const Els = document.querySelectorAll('div');
+        // 문서전체에대한 정보를 담아둔 곳 = document
+        // querseletorall : 검색기능
+        // ---> 'div'에 해당하는 모든 것을 검색
+        // const Els에 정보를 잠깐 담아두는 것
+        Els.forEach(el=>{console.log(el.dataset)})
+        // 하나씩 안에 있는 정보들을 확인함
+
+    </script>
+</body>
+</html>
