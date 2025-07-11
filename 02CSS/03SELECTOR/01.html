@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- [SELECTORE 선택자] -- 기본이라 중요함
+         문서 내에서 특정 위치를 선택하기 위한 것 : 선택자 FOR 스타일링~ -->
+
+    <style>
+        /* 전체선택자 : body를 포함한 모든 선택자 
+                      모든 선택자에 {}안에 요소가 들어가게 함*/
+        *{box-sizing: border-box;} /*border을 기준으로 width와 height가 잡힘*/
+
+        /*요소선택자 ex> div,span*/
+        div{ /*넓은 단위의 클래스라 보면 됨 
+               모든 div태그에 공통적으로 적용되기 때문*/
+            width:150px;
+            height:150px;
+            border : 1px solid;
+            margin : 10px;
+        }
+        /*id선택자 : 유일한 요소 지정(하나만 있어야 함) 
+                    여러 개를 사용하면 JavaScript에서 구별하지 못함*/
+        #id_01{
+        /*# : id 선택 시 써야함 */    
+            background-color: red;
+        }
+
+        /* class 선택자 : 특정 태그 그룹지정
+            여러 태그들에 공통 스타일링을 삽입할 때*/
+        .c1{
+            background-color: royalblue;
+        }
+
+        /* 그룹 선택자(,) : 서로 다른 선택자들을 복수 적용할 때*/
+        #id_01,     /*id와 클래스 둘다 적용됨*/
+        .c1{
+            border-radius: 50px;
+
+        }
+
+
+    </style>
+</head>
+<body>
+    
+    <div class="c1"></div>
+    <div id="id_01"></div>
+    <div></div>
+    <div class="c1"></div>
+    <div>
+        <p class="c1">HELLOWORLD</p>
+    </div>
+        
+</body>
+</html>
