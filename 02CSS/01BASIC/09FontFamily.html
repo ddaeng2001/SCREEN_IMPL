@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--GOOGLE FONT : Web 환경(외부경로)에서 파일을 받아오는 것
+            but 정적인 것들은 파일을 다운받아오는 게 안전(인터넷 연결 불안정 시)-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap" 
+    rel="stylesheet">
+
+    <style>
+         /*css style code 다운로드*/
+        .winky-rough {
+        font-family: "Winky Rough", sans-serif; /*기본글꼴 : Winky Rough, 문제가 생기면 뒤에껄로*/
+        font-optical-sizing: auto;
+        font-weight: 400; /*글꼴 굵기*/
+        font-style: normal; /*기울기, 이태리체 등 사용가능*/
+        }
+
+        /*글꼴등록*/
+        /*글꼴을 파일로 직접 다운로드 받아서 사용*/
+        @font-face {    /*특정 규칙 전달할 때 주로 사용*/
+            font-family: 'custom01';
+            src: url('./fonts/custom-font-01.ttf');
+                    /*현재 위치에서 fonts라는 폴더의 custom 파일*/
+                                            /*.ttf : 폰트 확장자*/
+            font-style:normal;
+            
+            body{ /*전체 글꼴 지정은 주로 body에서*/
+                  /*표준 글꼴을 이용하거나 폰트를 다운 후 등록해서 쓰는 것을 추천*/
+                font-family:'custom01'
+            }
+        }
+
+    </style>
+
+
+
+
+
+
+
+</head>
+<body>
+    <!--Font-family : 이 속성으로 글꼴을 바꿀 수 있음(내장형 글꼴로 바꾸기~)-->
+    <div style="font-family:'Times New Roman', Times, serif">HELLOWORLD</div>
+
+    <div class="winky-rough">HELLOWORLD</div>
+    <div style="font-family:'custom01'">HELLOWORLD</div>
+    <div>HELLOWORLD</div>
+    <div>HELLOWORLD</div>
+    <div>HELLOWORLD</div>
+    <div>HELLOWORLD</div>
+    <div>HELLOWORLD</div>
+    <div>HELLOWORLD</div>
+    <div>HELLOWORLD</div>
+    <div>HELLOWORLD</div>
+
+
+</body>
+</html>

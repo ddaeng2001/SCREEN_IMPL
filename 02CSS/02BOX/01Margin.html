@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{margin:0;}
+        div{
+            width:300px;height:300px;background-color: orange;
+        }
+
+        .d1{
+            /* all direction 동일 설정*/
+            /* margin: 20px; */
+
+            /* top,bottom:20px left,right:40px*/
+            /* margin: 20px 40px; */
+
+            /* top:10px,right:20px,bottom:30px,left:20px(지정되지 않아 right와 동일하게!)*/
+            /* margin:10px 20px 30px; 시계방향으로 생각할 것 */
+
+            /* top:10px,right:20px,bottom:30px,left:40px*/
+            margin:10px 20px 30px 40px; /*시계방향으로 적용됨(top->right->bottom->left)*/
+            
+            /*따로따로 지정 가능*/
+            margin-top:10px;
+            margin-left:20px;
+            margin-bottom:30px;
+            margin-right : 40px;
+        }
+
+        .d2{
+            margin : 0 auto; /* auto : 같은 비율을 가지도록 함*/
+                    /*상하:0, 좌우:auto*/
+        }
+        .parent{
+            width:80vw; /*vw기준으로 80%의 넓이*/
+            height: 250px;
+            margin: 20px auto;
+
+
+        }
+        .son{
+            background-color: royalblue;
+            width:150px;
+            height:150px;
+        }
+
+
+        /* ★★센터로 이동하는 방법 (해당태그로 이동해야함)
+        1. margin+position
+        ex> 이미지 로고를 가운데 맞출 때 많이 사용
+        2. layout코드 사용*/
+
+        /*가운데 맞추기 -01*/
+        .P1{
+            position:relative; /*상위태그를 relative로 해서 기준점으로 만들기*/
+        }
+        .s1{ /*상위는 relative 하위는 absolute ==>공식으로 외우기*/ 
+            position:absolute; 
+            /* 하위태그가 절대적인 위치를 가지게 되면서 무조건적으로 유지 */
+                                /* ex> 무엇인가 추가되더라도 절대 바뀌지 않음 */
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;
+            margin : auto; /*부모가 움직여도 가운데 유지*/
+        }
+
+        /*가운데 맞추기 -02*/
+        .p2{
+            display:flex;
+            justify-content: center; /*수평배치*/
+            align-items: center;  /*수직배치*/
+            /*배치를 하는 것이기 때문에 추가되면 같이 배치를 해줌 ==> 무엇인가 추가되면 위치가 변하게 됨*/
+        }
+    </style>
+</head>
+<body>
+
+    <!-- <div class="d1">HELLOWORLD</div>
+    <div class="d2">HELLOWORLD</div> -->
+
+    <div class="parent p1">
+                <!--2개의 클래스 제작-->
+        <div class="son s1"></div>
+    </div>
+
+    <div class="parent p2">
+                <!--2개의 클래스 제작-->
+        <div class="son s2"></div>
+    </div>
+    
+</body>
+</html>

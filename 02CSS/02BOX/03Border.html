@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="d1"></div>
+    <div class="d2"></div>
+    <div class="d3"></div>
+    <div class="d4"></div>
+
+    <style>
+        div{width:300px;height:300px;margin:30px;border:1px solid;}
+
+        .d1{
+            border-top:2px solid red;
+                           /*실선*/
+            border-right:3px dashed blue;
+                            /*점선*/
+            border-bottom : 4px dotted orange;
+                               /*원으로 구성된 점선*/
+            border-left:5px double green;
+                            /*이중선*/
+        }
+        .d2{
+            /* border-radius: 50%;
+            border-radius: 10px; */
+            /*모서리깎기*/
+            /*전체 너비의 10%를 깎음*/
+            /*10px은 반지름이 10인 원을 그려서 깎음*/
+            /* border-radius: 10px 50px; */
+                          /*상하(위치확인 +사진참고)*/ /*좌우*/
+
+            border-radius: 10px 50px 80px;
+                            /*시계방향으로~ 왼쪽은 지정되어있지 않으니 오른쪽 값을 따라서!*/
+        }
+        /*삼각형 만들기*/
+        .d3{
+            border-top:20px solid transparent;
+            border-right:20px solid blue;
+            border-bottom:20px solid blue;
+            border-left:20px solid transparent; /*투명색*/
+            width:0px;
+            height:0px;
+        }
+
+        /*종이접기*/
+        .d4{
+            position:relative;
+            border:1px solid blue;
+
+        }
+
+        .d4::after{
+           /*가상 선택자 : 실제로는 없는 태그지만 있는 것처럼 보여지는 것*/
+           /*실제 태그가 없어서 JavaScript에서는 다루기 어려워져서 웬만하면
+             CSS에 효과를 부여하는 정도로만!! */
+            content:'';
+            position:absolute; /*상위는 relative 하위는 absolute 기본*/
+            left:-1px;
+            top:-1px;
+            border-top:20px solid white;
+            border-right:20px solid blue;
+            border-bottom:20px solid blue;
+            border-left:20px solid white; /*투명색*/
+            width:0px;
+            height:0px;
+        }
+
+
+    </style>
+</body>
+</html>
