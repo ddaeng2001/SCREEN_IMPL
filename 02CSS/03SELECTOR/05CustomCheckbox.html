@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 체크박스 내의 체크표시와 백그라운드 색깔을 바꿔서 커스텀할려고~ -->
+    <style>
+        *{box-sizing: border-box;}
+        input[type="checkbox"]{
+            width:150px;
+            height:150px;  /*인라인형이라 문제 없음*/
+            background-color: orange; /*적용안됨*/
+            display: none; /*보여주지 않는 것*/
+        }
+
+        input[type="checkbox"]+label{
+            display:inline-block; /*인라인형이면서 width height를 조절할 수 있음*/
+            width:100px;
+            height:100px;
+            border : 1px solid gray;
+            background-image: url("./icon_off.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size:45px 45px;
+        }
+        input[type="checkbox"]:checked+label{ /*체크라고 하는 이벤트에 도달했을때 형제인 label*/
+            /* background-color: lightgray; */
+
+            background-image: url("./icon_on.svg");
+
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chk-block">
+        <input type="checkbox" id="chk">
+        <label class="check-label" for="chk"></label>
+                                    <!-- for이 id와 연결되어 있기에
+                                    label을 클릭해도 체크박스에 체크가 됨 -->
+        <span>체크박스</span>
+    </div>
+
+    
+    
+</body>
+</html>
