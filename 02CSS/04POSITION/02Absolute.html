@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--부모를 기준으로 position이 잡히지만 부모에 아무것도 잡혀있지 않으면
+        그 위쪽의 부모를 기준으로 한다.-->
+
+    <style>
+        div {
+            border: 1px solid;
+        }
+
+        .ancestor{
+            width : 750px;
+            height : 750px;
+            background-color: aquamarine;
+            border : 1px solid;
+            margin: 50px;
+            position:relative;
+        }
+        .parent {
+            width: 500px;
+            height: 500px;
+            background-color: royalblue;
+
+            margin: 50px;
+            position:relative;
+        }
+
+        .son {
+            width: 50px;
+            height: 50px;
+            background-color: orange;
+        }
+
+        .son:nth-child(1){
+            
+            /*상위 태그들에 position이 아무것도 잡혀있지 않으면 <body>를 기준 즉, viewport를 기준으로 잡힘*/
+            position:absolute; /*static과 무관하게 position을 잡기 때문에 staitc 뒤쪽에 위치할 수도 있다.*/
+            left:30px;
+            top:0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ancestor">
+        <div class="parent">
+            <div class="son">1</div>
+            <div class="son">2</div>
+            <div class="son">3</div>
+            <div class="son">4</div>
+        </div>
+    </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        a{text-decoration: none; color:black;}
+        ul{margin : 0; padding : 0; list-style: none; }
+        body{margin:0; padding:0;}
+
+
+        .wrapper{}
+        .wrapper>header>.top-header{}
+        .wrapper>header>.top-header>nav{
+
+        }
+
+        /*main nav*/
+        .wrapper>header>nav>ul.main-menu{
+            display:flex;
+            justify-content: space-between;
+            background-color: skyblue;
+            
+            
+            
+        }
+        .wrapper>header>nav>ul.main-menu>li{
+            background-color: blue;
+            width: 180px;
+            position: relative;
+            /* border : 1px solid;  */
+            
+            
+        }
+
+        .wrapper>header>nav>ul.main-menu>li>a{
+            background-color: red;
+            
+            
+
+        }
+
+        .wrapper>header>nav>ul.main-menu>li>ul.sub-menu{
+            background-color: gray;
+            position: absolute;
+            display: none;
+            
+
+
+
+        }
+        .wrapper>header>nav>ul.main-menu>li:hover>.submenu{
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="top-header"></div>
+            <nav>
+                <ul class="main-menu">
+                    <li>
+                        <a href="javascript:void(0)">All</a>
+                        <ul class="sub-menu">
+                            <li><a href="javascript:void(0)">1_submenu</a></li>
+                            <li><a href="javascript:void(0)">2_submenu</a></li>
+                            <li><a href="javascript:void(0)">3_submenu</a></li>
+                            <li><a href="javascript:void(0)">4_submenu</a></li>
+                            <li><a href="javascript:void(0)">5_submenu</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">BEST</a>
+                        <ul class="sub-menu">
+                            <li><a href="javascript:void(0)">1_submenu</a></li>
+                            <li><a href="javascript:void(0)">2_submenu</a></li>
+                            <li><a href="javascript:void(0)">3_submenu</a></li>
+                            <li><a href="javascript:void(0)">4_submenu</a></li>
+                            <li><a href="javascript:void(0)">5_submenu</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">충무공 이순신 시리즈</a>
+                        <ul class="sub-menu">
+                            <li><a href="javascript:void(0)">패키지</a></li>
+                            <li><a href="javascript:void(0)">신발</a></li>
+                            <li><a href="javascript:void(0)">의류</a></li>
+                            <li><a href="javascript:void(0)">모자</a></li>
+                            <li><a href="javascript:void(0)">키즈</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">꿈의 신소재 그래핀 원단</a>
+                        <ul class="sub-menu">
+                            <li><a href="javascript:void(0)">1_submenu</a></li>
+                            <li><a href="javascript:void(0)">2_submenu</a></li>
+                            <li><a href="javascript:void(0)">3_submenu</a></li>
+                            <li><a href="javascript:void(0)">4_submenu</a></li>
+                            <li><a href="javascript:void(0)">5_submenu</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section></section>
+        </main>
+        <footer></footer>
+    </div>
+</body>
+</html>
