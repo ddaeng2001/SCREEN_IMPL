@@ -4,15 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
-    
-    <div class="d1"></div>
-    <div class="d2"></div>
-    <div class="d3"></div>
-    <div class="d4"></div>
 
-    <style>
+        <style>
         div{width:300px;height:300px;margin:30px;border:1px solid;}
 
         .d1{
@@ -26,10 +19,10 @@
                             /*이중선*/
         }
         .d2{
-            /* border-radius: 50%;
-            border-radius: 10px; */
             /*모서리깎기*/
+            /* border-radius: 10%;
             /*전체 너비의 10%를 깎음*/
+            border-radius: 10px; */
             /*10px은 반지름이 10인 원을 그려서 깎음*/
             /* border-radius: 10px 50px; */
                           /*상하(위치확인 +사진참고)*/ /*좌우*/
@@ -43,8 +36,10 @@
             border-right:20px solid blue;
             border-bottom:20px solid blue;
             border-left:20px solid transparent; /*투명색*/
-            width:0px;
+            width: 0px;
             height:0px;
+            /*width와 height를 0px로 맞춘 이유는? 
+              :*/
         }
 
         /*종이접기*/
@@ -64,13 +59,22 @@
             top:-1px;
             border-top:20px solid white;
             border-right:20px solid blue;
-            border-bottom:20px solid blue;
-            border-left:20px solid white; /*투명색*/
-            width:0px;
-            height:0px;
+            /* border-bottom:20px solid blue; */
+            /* border-left:20px solid white; 투명색 */
+            /* width:0px; */
+            /* height:0px; */
         }
 
 
     </style>
+</head>
+<body>
+    
+    <div class="d1"></div>
+    <div class="d2"></div>
+    <div class="d3"></div>
+    <div class="d4"></div>
+
+
 </body>
 </html>
