@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 기본적인 프레임을 만들어서 요소를 배치하는 방법 : LAYOUT
+    FLEX를 가장 많이 씀(한 행 단위로 짤 때)
+    (&GRID: 행렬처리 시에는 유용) -->
+
+    <style>
+        /*  */
+        *{box-sizing: border-box;}
+        body{
+            margin : 0;
+        }
+        .wrapper{
+            width : 1280px;
+            height : 1080px;
+            margin : 0 auto;
+            border : 1px solid;
+            padding : 10px;
+        }
+        .parent{
+            height : 150px;
+            border : 1px solid;
+            display: flex; /*자식들의 상위 태그에 해야함 //가로배치 */
+            /* 수평배치 center,right,left,space-between,space-evenly space-around */
+                                        /*space-between(이것만 씀) : 각 끝의 요소들 제외하고 간격을 일정하게 조정*/
+                                        /*space-evenly: 모든 요소들의 간격을 일정하게 조정
+                                        /*space-around: 사이 간격을 주되 끝단의 요소들 간격은 1/2크기*/
+            justify-content: center;
+            
+            /* item간 여백지정없는 설정시 gap option 사용가능  */
+            gap:0px; /*space-between을 적용하면 쓸 필요 없음// 
+                        center로 모아놓은 상태에서 gap만큼 간격을 떨어트림*/
+            
+            /* 수직배치 start,end,center,flex-start,flex-end */
+            /*start: 위쪽으로 붙이기*/
+            align-items:center;/*수직 배치를 잡는 순간 가지고 있는 컨텐츠만큼만 height 제한됨*/
+            
+            /* 방향지정 : row , column row-reverse, column-reverse*/
+            flex-direction: column;
+            /*기본값 : row // row-reverse : 역순,, column : column방향으로 */
+            /* row(수평축에 대한 배치)냐 column(수직축에 대한 배치)에 따라서 align-items 배치 형태의 축이 달라짐 */
+            
+            margin-bottom:50px;
+        }   
+
+        .parent>.child{
+            width : 120px;
+            /* height : 40px; */
+            border : 1px solid;
+
+            
+        }
+
+        .parent2{
+            border: 1px solid;
+            display: flex; /*아래에 width,height에 대한 적용 X
+                             flex가 있으면 안에 다 우겨넣으려고 함 우선순위가 높기에*/
+            flex-wrap:wrap; /*flex안에 다 우겨넣지 않고 밑으로라도 내려서 width와 height를 유지하기 위함*/
+            justify-content: center;
+            align-items: center;
+            gap:10px;
+            
+        }
+        .parent2>.child2{
+            width:200px;
+            height:200px;
+            border: 1px solid;
+            background-color: antiquewhite;
+
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="parent">
+            <div class="child">1</div>
+            <div class="child">2</div>
+            <div class="child">3</div>
+            <div class="child">4</div>
+            <div class="child">5</div>
+        </div>
+        
+        <div class="parent2">
+            <div class="child2">1</div>
+            <div class="child2">2</div>
+            <div class="child2">3</div>
+            <div class="child2">4</div>
+            <div class="child2">5</div>
+            <div class="child2">6</div>
+            <div class="child2">7</div>
+            <div class="child2">8</div>
+            <div class="child2">9</div>
+            <div class="child2">10</div>
+            <div class="child2">11</div>
+            <div class="child2">12</div>
+            <div class="child2">13</div>
+            <div class="child2">14</div>
+            <div class="child2">15</div>
+            <div class="child2">16</div>
+            <div class="child2">17</div>
+            <div class="child2">18</div>
+            <div class="child2">19</div>
+            <div class="child2">20</div>
+        </div>
+    </div>
+</body>
+
+</html>
