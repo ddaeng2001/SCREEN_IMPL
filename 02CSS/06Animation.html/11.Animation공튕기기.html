@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            border : 1px solid ;
+            width:150px;
+            height:800px;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            position:relative;
+        }
+        .box>.ball{
+            width:100px;
+            height:100px;
+            border-radius: 50%;
+            background-color: orange;
+            position:absolute;
+            top:0;
+        }
+
+        @keyframes moving {
+               0%{top:0px;    animation-timing-function: ease-in;  width:100px;height:100px;}
+               50%{top:700px;  animation-timing-function: ease-out; width:100px;height:100px; } 
+               51%{width:125px;height:75px} /*지면에 닿았을 때 찌그러지는 효과*/
+               52%{width:100px;height:100px} /*닿은 후 다시 올라갈 때 제 모양대로 돌아감*/
+        }
+        .box>.ball{
+            animation: moving;
+            animation-duration: 10s;
+            animation-iteration-count: infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <div class="ball"></div>
+    </div>
+    
+</body>
+</html>

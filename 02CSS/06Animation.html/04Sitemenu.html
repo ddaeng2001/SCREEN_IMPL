@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{box-sizing: border-box;}
+        body{margin:0;}
+        .sitemenu{
+            padding: 20px;
+            position:relative;
+        }
+
+        .sitemenu>input[type="checkbox"]{
+            display:none;
+        }
+        .sitemenu>label{}
+        .sitemenu>label>span{
+            display:block;
+            width:35px;
+            height:2px;
+            /*인라인형은 width height가 적용되지 않기 때문에 block형으로 바꿔줘야함*/
+            background-color: black;
+            margin: 8px; /*삼선을 서로 띄워줌*/
+
+            transition:.3s;
+        }
+
+        .sitemenu>input[type="checkbox"]:checked+label>span:nth-child(1){
+                                        /*:checked 의사선택자로서 
+                                        checkbox에 check가 됐을 때 
+                                        input의 형제관계인 label~*/
+        transform: translate(0px, 10px) rotate(45deg);
+        
+        } 
+        .sitemenu>input[type="checkbox"]:checked+label>span:nth-child(2){
+            opacity:0; /*opacity: 투명도 */
+        }
+        .sitemenu>input[type="checkbox"]:checked+label>span:nth-child(3){
+        transform: translate(0px, -10px) rotate(-45deg);
+        }
+
+        .site-block{
+            width: 0;
+            height: 0;
+            margin-top: 25px;
+            
+            position:absolute; /* .sitemenu기준 포지션 - 뒷 배경이 뭐든 간에 위치 고수*/
+            top: 70px;
+        }
+
+        .sitemenu>input[type="checkbox"]:checked~.site-block{
+            width: 95%;
+            height: 500px;
+            border : 1px solid;
+
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="sitemenu">
+        <input type="checkbox" id="chk">
+        <label for="chk"> <!--label이 id에 체크되어서 label을 클릭해도 checkbox가 반응-->
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <div class="site-block"> <!--checkbox에 체크가 되었을 때 보여주는 내용-->
+
+        </div>
+    </div>
+</body>
+
+</html>

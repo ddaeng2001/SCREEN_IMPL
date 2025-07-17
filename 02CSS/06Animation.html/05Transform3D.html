@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--y축 x축뿐만 아니라 z축도 고려해서!! Transform 3D-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 200px;
+        }
+        .container {
+            width: 100px;
+            height: 100px;
+            background-color: royalblue;
+      
+        }
+        .container>.item {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            transition: 1s;
+       
+        }
+        .container:hover>.item{
+            transform: perspective(80px) rotateY(180deg);
+                       /*변형되는 부분을 보는 내 눈의 위치라고 생각할 것 :perspective*/
+                       /* 가까이 있을 수록 내 눈 앞에 있기에 내 눈 앞에서 모든 영역을 차지 */
+        }   
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="item"></div>
+    </div>
+</body>
+
+</html>
