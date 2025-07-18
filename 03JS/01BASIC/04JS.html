@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--자료형(자료의 종류)-->
+
+
+    <script>
+        //number
+        console.log(typeof 10);
+        console.log(typeof 10.5); //실수형(소수점)
+
+
+
+        //string
+        console.log(typeof "HELLOWORLD");
+        console.log(typeof 'HELLOWORLD'); //문자열은 '', "" 둘 다 가능
+        console.log(typeof `helloworld`); // ★★★★★ `(백팁) : 백엔드에서 많이 사용됨
+        
+        
+
+
+
+        //Object : {key : value , key : value};
+
+        //object: {key : value, key: value} -->js에서 많이 접하게 될 것 //object array 형태로 많이 set이 되어있어 추출을 많이 할 것 (후에)
+        //객체형   key는 동일함(ex>나이) value는 다 다름(ex>17살, 18살)
+                  //key: 변동가능성 있는 값을 추출할 때 사용
+
+        console.log(typeof {});
+        console.log(typeof {"name" : "홍길동", "age" : "30", "addr" : "대구"});
+
+
+
+
+
+        //★null : 개발자의 의도이냐 (비어있음) --> null이라고 하는 비어있는 값이기에 자료형으로 인식
+                 //object라는 자료형태에 포함됨
+                 //공간을 만들어놓고 일부러 비워놓은 것 
+                 //변수 초기화(공간형성 + 기본값 삽입 - 개발자가 의도한 값 NULL)
+        console.log("-----------------");
+        let vol = null; //null이라고 하는 빈 값을 VOL이라는 공간에 넣겠다.
+        console.log(vol)
+
+        //cf)java는 NULL 자체를 exception(오류)로 봄
+
+
+
+
+
+        //★undefined : 개발자의 실수냐 (비어있음)
+                        // 공간을 만들어놓지 않음(의도하지 않은 빈 값) == 공간형성 o, x but 기본값은 생략 - 개발자가 의도하지 못한 예외)
+        let vol2;       // 임시 공간을 만들어놨으나(null) 아래에는 값이 없음 == 이 경우도 undefined
+        //공간형성 시 예외 발생하지는 않음
+
+        console.log(vol2)   //만들지도 않은 공간안에 값을 보겠다고 하니 오류 생김
+        
+                            //오류가 뜨면서 아래의 코드들은 실행 자체가 안됨
+        //++ define(정의) == 공간이 형성되어있냐?
+
+
+
+
+
+        //boolean : 기계에 ask할 때 사용(참/거짓)
+        console.log(typeof true);
+        console.log(typeof false);
+        //분기처리(TRUE/FALSE)를 힘
+
+
+    </script>
+</body>
+</html>

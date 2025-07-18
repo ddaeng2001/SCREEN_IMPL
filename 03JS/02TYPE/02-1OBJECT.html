@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--object 자료형-->
+    <button onClick="poppi.sound()">뽀삐 짖어!</button>
+    <hr />
+    
+    <script>
+        
+        //object : 사물 < 객체(주체를 제외한 모든 대상)
+        const poppi =
+        {
+            //obejct == 속성(변수로 처리) + 기능(함수로 처리)
+            name: "뽀삐",
+            //속성명 : "값"
+            kind: "믹스견",
+            age: 1,
+            weight: 8.4,
+
+            //기능
+            sound: function () {
+                alert(this.name + " 이(가) 멍멍! 짖습니다-!");
+                //개별객체의 속성에 접근 가능 == this
+            },
+
+            toString: function () { //속성들을 한번에 쓰는 == toString
+                console.log(this.name, this.kind, this.age, this.weight);
+                //해당 객체가 지닌 특성 정보들 표시
+            }
+        }
+
+
+        //
+        console.log(poppi);
+        console.log(poppi.name);
+        //변수.속성명
+        console.log(poppi.kind);
+        console.log(poppi.age);
+        // poppi.sound();
+        //지정해놓은 기능을 사용할 때 Functor () 삽입
+        poppi.name = '토리';
+        //속성이 변수형태이기에 내용 바뀌기 가능
+        poppi.toString();
+
+    </script>
+</body>
+
+</html>

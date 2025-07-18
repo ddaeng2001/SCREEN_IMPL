@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button onClick="alert('HELLOWORLD')">BTN1</button>
+            <!-- onClick: 사용자의 이벤트(클릭)에 반응함 -->
+            <!-- alert: 브라우저 내에 있는 경고창(브라우저에 있는 기능을 쓰는 거라 브라우저의 종류에 따라 다름) -->
+            <!--''내에 있는 것과 +는 데이터임-->   
+    <button onClick="alert(10+20)">BTN2</button>
+
+    <button onClick="alert('HELLOWORLD\nHELLOWORLD\nHELLOWORLD')">BTN3</button> <!--button: a태그와 비슷하지만 좀 더 js와 친화적임//js 처리 속성 지님-->
+                                      <!--\n 줄바꿈-->
+
+    <hr/>
+    <a href="javascript:void(0)">BTN0</a>
+            <!--js의 기본값 제거-->
+    <a href="javascript:alert('HELLOWORLD')">BTN1</a> <br/> 
+    <!--a태그는 이벤트 속성이 아니기에 alert를 가져오면 X-->
+    <!-- a태그로 js의 이벤트 속성을 쓰려면 javascript:를 삽입해야함 -->
+    <a href="javascript:alert(10+20)">BTN2</a> <br/>
+    <a href="javascript:console.log(obj)">BTN3</a> <br/>
+                        <!-- console.log: console창의 내용을 로깅하는 것 -->
+                        <!-- obj의 내용을 console창에 로깅해줌 -->
+    </body>
+
+    <script> 
+    // html내에서 js코드를 처리할 때 사용하는 코드 
+    // html의 문서내에서 script를 처리할 때는 제일 하단에서 처리
+        const obj = {"name":"홍길동", "age":"30","addr":"대구"}; //한 개의 객체 단위 저장
+        //const : 변수를 선언할 때 사용되는 키워드
+    //{}=obj(현실에 있는 대상을 묶어놓은 형태인 객체)
+    //json = 인터넷 공간에서 데이터 단위를 전달함으로써 어떤 내용을 가지고 있는지 확인가능
+    //담은 데이터를 계속 쓰려면 이름이 필요하기에 obj라는 이름을 붙여줌
+    </script>
+    
+</body>
+</html>

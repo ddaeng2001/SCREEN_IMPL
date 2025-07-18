@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //보간법
+        //변수, 함수 호출 및 산술 표현식을 문자열에 직접 삽입할 수 있는 기능
+        //${value} 형식을 사용, 백틱(``)에만 사용가능
+        //백틱 범위 내에 미리 저장한 값들을 중간에 삽입해서 넣을 수 있는 것
+
+        //변수지정 : let, 상수지정 : const
+        //변수 == 바뀔 예정인 수(데이터)의 공간
+        //상수 == 항상 같은 수(데이터)을 처리하기 위한 공간
+        let str1 = "hello";
+        let str2 = "world";
+        console.log(str1 + str2);
+                    // ( : Functor, Functor내의 변수/상수 이름을 넣으면 그 안에 값을 꺼내와서 처림
+                    // Operator(+) - 기능
+
+        let str3 = `TEST1 : ${str1} / ${str2}`;
+                    //문자열 내에 지정된 변수를 가져와서 새로운 문자열을 만듦 == 보간법
+
+        let str4 = `TEST2 : ${10+20+30}`;
+                    //문자열 내 보간법 처리에 포함된 간단한 연산 가능 => 문자열로 묶여서 저장됨
+        let str5 = `10>20 ? ${10>20}`;
+        console.log(str3);
+        console.log(str4);
+        console.log(str5);
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
