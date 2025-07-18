@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    
+
     <!--버튼 만드는 방식-->
     <button>BTN</button>
     <a>BTN2</a>
@@ -21,15 +21,16 @@
     <!-- 1. 버튼으로 만들려면 위치를 먼저 찾아야함(id로 찾아도 되지만 class로 찾기) -->
     <script>                                
         const btnE1 = document.querySelector('.btn');
-                 //질의 선택자(css에서 정해놨던 선택자를 가져오면 됨)
+                                //질의 선택자(css에서 정해놨던 선택자를 가져오면 됨)
                                             // 하나의 버튼을 찾아옴
                  //특정 요소를 찾아서 버튼으로 만듦
-        let state = false;
+        let state = false; //state라는 공간안에 false라는 값을 담음
 
         //btnE1.addEventListener('이벤트종류','수행로직');
+            //콜백 함수: 사용자/개발자로부터 수행로직을 전달받아 브라우저 내에서 수행시켜주는 것
              //★ 많이 사용됨    ex>이벤트 종류: 키보드 입력 등 사용자 작업
                                             //수행로직 ()=>{} : 클릭을 했을 때 어떤 식으로 전달할 건지
-             //콜백 함수: 사용자/개발자로부터 수행로직을 전달받아 브라우저 내에서 수행시켜주는 것
+             
         btnE1.addEventListener('click', ()=>{
                                 //click했을 때 수행로직을 처리해돌라는 것을 전달 받아 addEventListner가 수행함
             //alert('클릭됨!');
