@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/중구맛집.js"></script>
+</head>
+<body>
+    
+
+    <script>
+        //
+        console.log("ALL DATA", 중구맛집);
+        //
+        const datas = 중구맛집.data;
+        console.log("datas",datas);
+
+        //한식맛집만 필터링 console.log
+        const Korean = datas.filter((restaurant)=>{return restaurant.FD_CS=="한식"});
+        console.log("한식맛집:",Korean);
+
+        //일식 필터링 -> 상호명,메뉴,주소만 추출해서 새로운 배열로 재구성(map)
+        const Japanese = datas.filter((restaurant)=>{return restaurant.FD_CS=="일식"})
+                              .map((restaurant)=>{
+                                restaurant={"BZ_NM": restaurant.BZ_NM, "MNU": restaurant.MNU, "GNG_CS":restaurant.GNG_CS}
+                                return restaurant
+                            });
+        console.log("일식맛집:",Japanese);
+    
+    </script>
+</body>
+</html>
