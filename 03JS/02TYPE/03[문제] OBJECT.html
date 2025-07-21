@@ -11,19 +11,19 @@
 
     <div>
         <label>국어점수 : </label>
-        <input class="korea" type="text" name="국어"><button onclick="">저장</button>
+        <input class="korea" type="text" name="국어"><button onclick="myScore.save국어">저장</button>
     </div>
     <div>
         <label>영어점수 : </label>
-        <input class="english" type="text" name="국어"><button onclick="">저장</button>
+        <input class="english" type="text" name="영어"><button onclick="myScore.save영어">저장</button>
     </div>
     <div>
         <label>수학점수 : </label>
-        <input class="math" type="text" name="국어"><button onclick="">저장</button>
+        <input class="math" type="text" name="수학"><button onclick="myScore.save수학">저장</button>
     </div>
     <hr />
-    총합 : <div class="sum-block"></div> <button onClick="">확인</button><br />
-    평균 : <div class="avg-block"></div> <button onClick="">확인</button><br />
+    총합 : <div class="sum-block"></div> <button onClick="myScore.sum">확인</button><br />
+    평균 : <div class="avg-block"></div> <button onClick="myScore.avg">확인</button><br />
 
     <script>
 

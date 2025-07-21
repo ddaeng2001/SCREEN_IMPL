@@ -13,7 +13,7 @@
 
     <script>
         // 배열 : 여러 자료Type을 저장하기 위한 자료구조
-        // let arr=['str1',"str2",`str3`,null,true,false,undefined,{name:"홍길동",age:15}];
+        let arr=['str1',"str2",`str3`,null,true,false,undefined,{name:"홍길동",age:15}];
         //         //스트링, 오브젝트,
         //         //다른 자료형도 한 배열 안에 넣을 수 있음 (cf)java는 불가능)
                 
@@ -58,7 +58,7 @@
         //---------------------------------------------------
 
         // console.log("------------------------");
-        // arr.forEach((item)=>{console.log('item',item);});
+        arr.forEach((item)=>{console.log('item',item);});
             //콜백함수: 로직<()=>{}>을 전달받는 함수    
                    // (각각의 요소의 이름)=>{}
 
@@ -222,53 +222,53 @@
             { id: 10, name: "수지", age: 26, department: "디자인", salary: 4800, years: 3 }
         ];
 
-    //연봉이(salary) 6000이상이면서 근속연수(years)가 7년이상인(item.salary>=6000 && item.years>=7) 
-    // 직원만 필터링해서 배열로 저장 확인
-    // const q1 = employees.filter((item)=>{return item.salary>=6000 && item.years>=7})
-    // console.log(q1)
+    // //연봉이(salary) 6000이상이면서 근속연수(years)가 7년이상인(item.salary>=6000 && item.years>=7) 
+    // // 직원만 필터링해서 배열로 저장 확인
+    // // const q1 = employees.filter((item)=>{return item.salary>=6000 && item.years>=7})
+    // // console.log(q1)
 
-    // //모든 직원의 연봉(salary) 기준으로 내림차순 정렬한 배열 새로 만들기
-    // const q2 = employees.sort((a,b)=>{return b.salary-a.salary})
-    // console.log(q2)
+    // // //모든 직원의 연봉(salary) 기준으로 내림차순 정렬한 배열 새로 만들기
+    // // const q2 = employees.sort((a,b)=>{return b.salary-a.salary})
+    // // console.log(q2)
 
-    // //모든 직원의 연봉(salary) 에 근속연수*100 만큼의 보너스를 추가하여 total_salary필드를 추가한 배열을 반환
-    // const q3 = employees.map((item)=>{
-    //                         item={...item,"total_salary" : item.salary+item.years*100}
-    //                         return item;})
-    // console.log(q3);
+    // // //모든 직원의 연봉(salary) 에 근속연수*100 만큼의 보너스를 추가하여 total_salary필드를 추가한 배열을 반환
+    // // const q3 = employees.map((item)=>{
+    // //                         item={...item,"total_salary" : item.salary+item.years*100}
+    // //                         return item;})
+    // // console.log(q3);
 
-    //department(부서) 별로 직원들의 연봉총합을 구하세요
-    // const dev = employees.filter((item)=>{return item.department == "개발"})
-    //                     .reduce((sum,item)=>{return sum+item.salary},0)
-    // console.log(dev)
+    // //department(부서) 별로 직원들의 연봉총합을 구하세요
+    // // const dev = employees.filter((item)=>{return item.department == "개발"})
+    // //                     .reduce((sum,item)=>{return sum+item.salary},0)
+    // // console.log(dev)
 
-    // const design = employees.filter((item)=>{return item.department == "디자인"})
-    //                     .reduce((sum,item)=>{return sum+item.salary},0)
-    // console.log(design)
+    // // const design = employees.filter((item)=>{return item.department == "디자인"})
+    // //                     .reduce((sum,item)=>{return sum+item.salary},0)
+    // // console.log(design)
 
-    // const marketing = employees.filter((item)=>{return item.department == "마케팅"})
-    //                     .reduce((sum,item)=>{return sum+item.salary},0)
-    // console.log(marketing)
+    // // const marketing = employees.filter((item)=>{return item.department == "마케팅"})
+    // //                     .reduce((sum,item)=>{return sum+item.salary},0)
+    // // console.log(marketing)
 
-    // const employ = employees.filter((item)=>{return item.department == "경영"})
-    //                     .reduce((sum,item)=>{return sum+item.salary},0)
-    // console.log(employ)
+    // // const employ = employees.filter((item)=>{return item.department == "경영"})
+    // //                     .reduce((sum,item)=>{return sum+item.salary},0)
+    // // console.log(employ)
 
     // console.log(employees)
     // const result4 = employees.reduce((sum,item)=> {
-    //     sum[item.department]=sum[item.department]==undefined?item.salary:sum[item.department]
+    //     sum[item.department]=sum[item.department]==undefined?item.salary:sum[item.department]+item.salary;
     //     console.log(sum);
     //     return sum;
     // },{});
     // console.log(result4);
 
 
-    // 연봉(salary)가 가장높은 직원을 찾아 객체하나만 반환(mdn문서에서 find를 찾아보세요 - !)
-    // const top_s = employees.sort((a,b)=>{return b.salary-a.salary})[0];
-    // console.log(top_s);
+    // // 연봉(salary)가 가장높은 직원을 찾아 객체하나만 반환(mdn문서에서 find를 찾아보세요 - !)
+    const top_s = employees.sort((a,b)=>{return b.salary-a.salary})[0];
+    console.log(top_s);
 
     //최대값 구하기
-    const max_items2 = employees.find((item)=>{return item.salary==max_item.age;});
+    const max_items2 = employees.find((item)=>{return item.salary==top_s.salary;});
     console.log(max_items2);
 
 
