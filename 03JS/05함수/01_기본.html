@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 함수 구조에 집중할 것 -->
+    <script>
+        // ECMA6(==java ver.) 이전
+
+        // 인자 o 리턴 o
+        function sum1(n1,n2) //함수의 해더
+                      //외부 데이터(동전)를 받는 공간(동전 주머니) == 파라미터(n1,n2)
+        {//함수의 본체(내부 로직이 들어가야하는 위치)
+            return n1+n2; //반환값
+        } // 함수를 정의한 것
+        const v1 = sum1(100,200);   //함수 실행 Call(Call-by-Value)
+                        //value값을 전달해서 함수를 실행하는 방식
+                        //(인자1,인자2) == 동전
+        console.log("sum1...",v1);  //sum1 값 확인을 위한 것
+
+
+
+        // 인자 o 리턴 x
+        function sum2(n1,n2)
+        {
+            console.log('sum2...',n1+n2); //함수의 목적 : 덧셈의 결과를 알려줘야 하지만 return이 없어
+                                                        //console창으로 알려줌
+        }
+        sum2(200,300) //return도 없기 때문에 담을 공간도 필요 X
+
+
+        // 인자 x 리턴 o
+        function sum3() //외부의 값이 없기에 파라미터가 필요 X
+        {
+            const n1=111;
+            const n2=222;   //외부의 값 대신 내부 변수 값 생성
+            return n1+n2;
+        }
+        const v3 = sum3();
+        console.log("sum3...",v3);
+
+
+
+        // 인자 x 리턴 x    -- 외부적으로 처리하기에 결합도가 가장 낮아 독립적으로 운행됨
+        function sum4()     
+        {
+            const n1 = 100;
+            const n2 = 200;
+            console.log("sum4...", n1+n2);
+        }
+
+
+        // ECMA6 이후 ()=>{}
+        //인자 o 리턴 o
+        const f1=(n1,n2)=>{return n1+n2;}
+        
+        //인자 o 리턴 x
+        const f2=(n1,n2)=>{console.log(n1+n2);}
+
+        //인자 x 리턴 o
+        const f3=()=>{return 100;}
+
+        //인자 x 리턴 x
+        const f4=()=>{}
+
+        f2(100,200);
+
+
+
+        //<모든 함수 공통>
+
+        // 인자의 개수 ? : 무제한 (how : 가변인자...사용)
+        // (인자==함수가 외부로부터 받을 수 있는)
+        const f5=(n1,n2, ...args)=>{
+                        //함수의 functor에서 사용될 때는 가변인자(...)
+                        //배열에 요소들이 담기기에 배열함수 사용 가능
+            console.log('n1',n1)
+            console.log('n2',n2)
+            console.log('args',args)
+        }
+
+        f5(100,200,300,400,500,600,700,800,900);
+
+
+        // 반환자료형의 개수? : 반드시 1개만 반환할 것 -> 여러 개 return try시 object 사용!
+        //<여러 return값 생성을 위해 object 사용>
+        const f6=()=>{
+            return {
+                //속성
+                n1 : 100,
+                n2 : 200,
+                //기능
+                sum : function(){return this.n1+this.n2;}
+
+            }
+        }
+        const v20 = f6();
+        console.log(v20.sum());
+    </script>
+</body>
+</html>
