@@ -23,6 +23,7 @@
         // 하위프로토타입 함수
         function Dog(name,kind){
             Animal.call(this,name); //상위 프로토타입 생성자 호출!(상속관계 형성을 위해)
+            
             console.log("Dog 생성자 호출!");
             this.kind = kind;   //Dog에 속성 추가
         }
