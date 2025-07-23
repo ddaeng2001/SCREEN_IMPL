@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        // 스코프(SCOPE)란
+        // 변수(공간)나 함수(기능)가 접근할 수 있는 범위 == 적용되는
+        // 전역스코프(Global Scope)와 지역 스코프(Local Scope)로 구별
+        // 전역스코프 : 모든 지역에서 접근이 가능
+        // 지역스코프 : 특정 영역( {} )에서만 접근이 가능에서만 접근이 가능
+        // - 함수스코프 : 함수본문{} 내에서 선언된 변수는 함수 내에서만 접근 가능
+        // - 블록 스코프 : if, while...{}(함수가 아닌 다른 {} 내의) 해당 블록 내에서만 접근 가능
+        // - 렉시컬(Lexcial) 스코프 : 변수(공간을 만들어놓은)를 선언한 위치에 따라서 스코프 결정
+
+
+
+        // 전역 스코프
+        // var g_val = "전역변수 확인!";
+        // // {}에도 쓰이고 if{}(블록 스코프)에도 쓰임
+
+        // function a() {
+        //     console.log('a func()..', g_val);
+
+        // }
+        // a();
+        // if(true){
+        //     console.log('if...',g_val);
+        // }
+        // console.log({key1:g_val});
+
+
+
+
+        // //블록 스코프
+        // if(true){
+        //     let v_1 = "블럭 내에 사용되는 지역변수"
+        //     console.log('v_1',v_1);
+        //     var v_2 = "블럭 내에 사용한 var 변수"
+        // }
+        // // 블럭내에서 생성된 변수는 블럭 밖에서는 소멸됨!
+        // console.log('v_2',v_2);
+        // console.log('v_1',v_1);
+
+
+
+
+        // 렉시컬 스코프() == 함수가 정의된 위치
+        const f1 = ()=>{
+            console.log('f1...',this);  //상위스코프(window 객체)의 'this'를 가져옴
+                                                    //모든 객체를 관리하는 최상위 객체 : window 객체
+            // 정의된 위치가 window이다.
+        }
+        f1();
+
+        function f2() {
+            console.log("f2...", this);     // 호출 방법에 따라 this가 달라짐
+        }
+        f2();                               // window (전역에서 호출했기 때문)
+
+        // f1과 f2는 window에 위치해있다. 즉, 전역화되어있는 상태
+
+
+
+
+
+        //console.log("--------------")
+        const obj = {
+            name : 'obj', //속성
+            method1: function () { //함수 기능
+                const f1 = () => {  //함수 안에 함수 삽입(잘 사용x)
+                    console.log('f1 in method1:', this);   // this는 obj, obj 단위기 떄문에 정의된 위치는 obj
+                }
+                f1();
+            }
+        };
+        obj.method1();
+
+
+
+    </script>
+</body>
+</html>

@@ -157,7 +157,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr class="price">
                         <td><strong>37000</strong>원</td>
                         <td><strong>+0</strong>원</td>
                         <td><strong>=37000</strong>원</td>
@@ -169,9 +169,10 @@
                 <button>전체상품주문</button>
                 <button>선택상품주문</button>
             </div>
-            <div class="npay-divider"></div>
-            <table class="npay-table">
-                <tr>
+            
+            <table class="pay">
+                <!-- <div class="npay-divider"></div> -->
+                <tr class="npay">
                     <td class="npay-left">
                         <div class="npay-label">NAVER</div>
                         <div class="npay-desc">
@@ -186,10 +187,7 @@
                         </button>
                     </td>
                 </tr>
-            </table>
-            <div class="kakaopay-divider"></div>
-            <table class="kakaopay-table">
-                <tr>
+                <tr class="kakaopay">
                     <td class="kakaopay-left">
                         <div class="kakaopay-label">kakao</div>
                         <div class="npay-desc">
@@ -205,6 +203,7 @@
                 </tr>
             </table>
         </main>
+        
         <footer>
             <div class="footinfo">
                 <ul class="company">
