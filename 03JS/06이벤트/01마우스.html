@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div{width:300px;height:200px;border:1px solid;}
+        div.d4{
+            width:500px;
+            height:400px;
+            border : 5px dashed gray;
+            color : gray;
+            position: relative;
+        }
+        div.d4::after{
+            content:'+';
+            position:absolute;
+            left:0;right:0;top:-110px;bottom:0;
+            margin : auto;
+            width: 20px;
+            height: 20px;
+            font-size: 5rem;
+            font-weight: 600;
+        }
+        .preview{
+            width: 150px;
+            min-height: 400px;
+            border : 1px solid;
+            position: absolute;
+            left:530px;
+            bottom: -20px;
+            overflow-y:auto;
+            
+            display:flex;
+            justify-content:start;
+            align-items:center;
+            flex-direction: column;
+        }
+        .preview>img{
+            width:100%;
+            height:100px;
+            object-fit: cover;
+
+        }
+    </style>
+
+</head>
+<body>
+    <div class="d1"></div>
+    <hr/>
+    <div class="d2"></div>
+    <hr/>
+    <div class="d3"></div>
+    <hr/>
+    <div class="d4"></div>
+    <div class="preview"></div>
+    <hr/>
+
+    <script> // 이벤트 처리 시, 위치 찾기를 선행할 것
+
+        // 클릭이벤트
+        var cnt=0;
+        const d1El = document.querySelector('.d1'); // 위치 수색
+
+        d1El.addEventListener("click",(e)=>{
+                                        //addEventListener를 통해서 객체에 접근이 가능함
+            console.log("clicked...",e.target); //결과 값 : clicked... <div class="d1"></div>
+            d1El.innerHTML=`<h1>${++cnt}</h1>` ;
+        });
+
+        
+        
+        // 상태관리를 전역화하지 않고 Closure을 이용해 특정 함수 내 에서 하는 것
+
+        // 클릭이벤트 + 클로저 상태관리
+
+        function clickHandler() { //외부함수
+                    // Handler : 처리기
+            //상태
+            let cnt=0;
+            function addCnt(node) { //내부함수
+                cnt++;
+                console.log("addCnt..",cnt);
+                node.innerHTML=`<h1>${cnt}</h1>`;
+            }
+            return addCnt; //addCnt의 위치정보 return
+
+        }
+        const addCnt = clickHandler(); //내부함수 위치 확인 가능
+                
+        const d2El = document.querySelector('.d2'); // 위치 수색
+
+        d2El.addEventListener("click",(e)=>{
+                                        //addEventListener를 통해서 객체에 접근이 가능함
+            console.log("clicked...",e.target); //결과 값 : clicked... <div class="d1"></div>
+            addCnt(d2El);   // Closure 내에 있는 Cnt가 addCnt에 대해서만 카운트됨
+        });
+
+
+        //마우스 포인터 이동을 감지하는 작업
+        /*
+            mouseenter: 마우스 포인터가 특정영역내로 진입시
+            mouseOver : 마우스 포인터가 특정영역내에 머무를 시
+            mouseLeave : 마우스 포인터가 특정영역밖으로 나갈 때
+            click       : 마우스 1회클릭
+            dblclick    : 마우스 2회 클릭
+            contextmenu : 마우스 우클릭
+        */ 
+       const d3El = document.querySelector('.d3');
+       d3El.addEventListener('mouseenter', ()=>{ d3El.innerHTML=`<h1>MOUSEENTER</h1>`});   //d3 영역 안으로 MOUSEPOINTER가 들어왔을 때
+       d3El.addEventListener('mouseleave', ()=>{ d3El.innerHTML=`<h1>MOUSELEAVE</h1>`});
+    //    console.log('mouseenter...');
+    // d3El.addEventListener('mouseover', ()=>{ d3El.innerHTML=`<h1>MOUSEE\OVER/h1>`});
+    // 유사한 이벤틀 간의 간섭이 일어나기에 주의할 것~! ex> over와 Enter가 겹침
+                                                    //Enter은 한 번, over은 머무르는 동안 카운팅
+       d3El.addEventListener('dblclick', ()=>{ d3El.innerHTML=`<h1>MOUSEDBLCLICK</h1>`});
+       d3El.addEventListener('contextmenu', (e)=>{ 
+                                            // 이벤트가 발생되면 이벤트 객체가 생성되며 자동으로 실행시킴
+            e.preventDefault();
+            d3El.innerHTML=`<h1>MOUSE 우클릭</h1>`
+        });
+
+       document.addEventListener('contextmenu', (e)=>{e.preventDefault();})
+       //브라우저의 우클릭 차단 시키는 방법
+
+
+       /*
+            dragstart   : 드래그 시작(마우스를 끌어당길 때의 시작점)
+            drag        : 드래그 중
+            dragenter   : 드래그가 대상 영역 위로 이동시(요소가 드랍의 대상이 될 때)
+            dragover    : 드래그가 대상 영역 위에 있는 동안(요소가 드랍의 대상이 될 때)
+            dragleave   : 드래그가 대상 영역에서 벗어날 때(요소가 드랍의 대상이 될 때)
+            dragend     : 드래그 종료
+            drop        : 드랍(끌어온 마우스의 왼쪽PUSH상태->손을 뗀 경우)
+        
+       */
+
+       const d4El = document.querySelector('.d4');
+       d4El.addEventListener('dragenter',(e)=>{
+        e.preventDefault(); //기본기능 막기
+        console.log('dragenter...',);
+       });
+
+       //기본기능을 다 꺼놔야 다른 이벤트에 영향을 주지 않음
+       d4El.addEventListener('dragover',(e)=>{
+        e.preventDefault();
+        console.log('dragover...');
+        d4El.style.border="5px dashed lightgray";   //dragover하는 동안 연한 회색으로 변경
+        d4El.style.color="lightgray";
+        });
+
+       d4El.addEventListener('dragleave',(e)=>{
+        e.preventDefault();
+        d4El.style.border = "5px dashed gray";  //dragleave하면 스타일이 다시 돌아오게끔
+        d4El.style.color = "gray";
+    });
+
+        //(데이터)유효성 검사 함수 -- 주로 정책 기반으로 
+        function isValid(file){
+            //type이 image/* 인지(데이터 유효성 체크)
+            if(!file.type.startsWith('image/')){
+                //file의 유형이 image를 포함하지 않는다면 {}안으로 집어 넣음
+                            //시작 부분이 image/가 포함되어 있다면
+                alert("이미지 파일만 업로드 가능합니다.");
+                return false;
+            }
+
+            //file size
+            if(file.size >= (1024*1024*1)){
+                alert("최대 허용 파일 크기는 1MB입니다.");
+                return false;
+            }
+
+            //true/False -- 질의 함수일 때 주로 true/False반환함
+            return true;
+
+        }
+
+        d4El.addEventListener('dragend',(e)=>{e.preventDefault();});
+            //많이 사용됨, 특히 Click event!
+
+
+       d4El.addEventListener('drop',(e)=>{
+        e.preventDefault();
+        d4El.style.border = "5px dashed gray"; //dragleave하면 스타일이 다시 돌아오게끔
+        d4El.style.color = "gray";
+        // console.log('drop',e);
+        // console.log('drop',e.target);
+        // console.log('drop',e.dataTransfer);
+        // console.log('drop',e.dataTransfer.files); //데이터를 담고 있음 FileList
+        // console.log('drop', e.dataTransfer.files[0]);
+        const files = e.dataTransfer.files; //files obj 이름 부여해서 확인 가능
+             
+        console.log(files);
+
+        for(let i=0;i<files.length;i++){
+            const file = files[i];
+            //유효성 검증
+            if(!isValid(file)){
+                //isValid의 결과값을 확인 가능(True or False지만 True인 경우에만 {}안을 실행함)
+                //이미지가 포함되어있지 않다면 preview가 되지 않게 함.
+                return ;    // 유효하지 않다면 블럭 자체를 벗어남, 실행X
+
+            }
+
+            //이미지 PREVIEW
+            const previewEl = document.querySelector('.preview');
+            const newImageEl = document.createElement('img');    //img 태그 생성 <img src="" alt="">가 만들어진 것
+            newImageEl.src=URL.createObjectURL(file);
+                        //링크(경로)의 문자열로 되어진 내용으로 이미지를 대신함 in JS (==base64)
+                        //문자열이지만 웹에서는 이미지로 바뀜
+                        //file경로는 없지만 해당 웹 브라우저 내에서 잠깐 보여주는 형태로 이미지화 할 수 있음
+                        //file 오브젝트를 이미지화 시키는 것
+            previewEl.appendChild(newImageEl);
+
+        }
+        
+
+    });
+
+
+    </script>
+</body>
+</html>
