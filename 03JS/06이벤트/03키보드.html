@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    KEYUP : <input id="input1"><br>
+    <p id="p1"></p>
+    <hr>
+    KEYDOWN : <input id="input2"><br>
+    <p id="p2"></p>
+    <hr>
+    KEYPRESS : <input id="input3"><br>
+    <p id="p3"></p>
+    <hr>
+
+    <script>
+        // 셋 다 한국어는 인식하지 못함
+
+        //KEYUP     : 키보드가 올라올 때(내려갔다가 올라올 때)-- 아스키 코드에서 대소문자를 구별하지는 못함
+        const keyupEl = document.querySelector('#input1')    //#은 id선택자
+        const p1El = document.querySelector('#p1')
+        keyupEl.addEventListener('keyup',(e)=>{ //키가 올라올 때 발생하는 이벤트 객체의 이름을 e로 임의 지정
+            console.log("keyup...",e);
+            console.log("keyup...",e.key);
+            console.log("keyup...",e.keyCode);
+            if(e.keyCode==13){  //Enter입력시 keycode가 13임, 즉 enter를 눌렀을 때
+                //input value의 값을 p1El안에 넣기
+                const value = keyupEl.value;
+
+                // p1El.innerHTML=value+"<br/>" // 이걸 하면 엔터 후 새로운 내용을 삽입하기에 br이 안 먹음
+                p1El.innerHTML+=value+"<br/>";   //=> p1El.innerHTML = p1El.innerHTML+value+"<br/>" 
+                    //innerHTML=>p1El의 컨텐츠에 특성 값을 넣어줌(HTML태그를 포함해서 == HTML 태그를 넣어도 전달 됨)                    
+                keyupE.value="";    // 엔터키를 친 후 input에 입력했던 값을 비워줌
+
+            }
+            
+        });       
+
+        //KEYDOWN   : 키보드가 내려갈 때(누른 경우)
+        const keydownE2 = document.querySelector('#input2')
+        const p2El = document.querySelector('#p2')
+        keydownE2.addEventListener('keydown',(e)=>{
+            console.log('keydown...', e);
+            if(e.keyCode==13){
+                const value = keydownE2.value;
+                p2El.innerHTML=value+"</br>";
+                keydownE2.value="";
+
+            }
+        });
+
+
+        //KEYPRESS  : 키보드를 계속 누를 때(제어문자(EX>SHIFT)인식x) -- 대소문자 구별 가능
+        const keypressE3 = document.querySelector('#input3')
+        const p3El = document.querySelector('#p3')
+        keypressE3.addEventListener('keypress',(e)=>{
+            console.log('keypress...',e);
+        });
+
+    </script>
+</body>
+</html>
