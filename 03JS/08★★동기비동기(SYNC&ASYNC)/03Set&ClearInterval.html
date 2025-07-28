@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button onClick="start()">반복_예약실행</button>
+    <button onClick="stop()">반복_예약취소</button>
+    <hr/>
+    <div class="d1"></div>
+
+    <!-- JS에서는 main thread 하나로 작동하는 것임 단지 분할되어서 작동하는 것처럼 보일뿐! -->
+    <script>
+
+        let id=null;    //obj로 null삽입
+        let cnt=0;
+        //작업 흐름과 달리 다른 스레드가 동작 // 스레드가 생성되면 setTimeout에 스레드의 고유번호(id)가 가져와짐
+        //몇 초 후에 내용을 띄움
+        const start = ()=>{
+            const d1El = document.querySelector('.d1');
+            id=setInterval(()=>{
+            //나눠진 스레드의 고유번호(id)를 받아옴
+                d1El.innerHTML=`SETINTERVAL RESULT..${++cnt}`;
+            },1000);        //언제 실행할 건지 m/s단위로 지정 즉, 3000m/s-> 3초
+            console.log('id',id);   //실행할 때마다 id번호가 달라지는데 스레드가 그만큼 분할된 것
+        }       
+        
+        //해당 id를 제거처리
+        //제거할려면 고유번호(id)가 필요함
+        //비동기 분할에 대한 작업 종료를 위해서
+        const stop = ()=>{
+            clearInterval(id);
+        }
+    </script>
+</body>
+</html>

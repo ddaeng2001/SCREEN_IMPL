@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        // 스레드 == 작업시점이 나눠지는 것
+
+        //메인스레드에서의 동작 확인
+        for(let i =0;i<10;i++){
+            console.log("main thread.. for_1..", i);
+        }
+        console.log("for_1 종료..!");   //위의 반복문이 끝날 때까지 움직이지 않음! 끝나야 움직임
+
+
+        //비동기 처리(스레드를 분할 처리 - ) ->js에서는 스레드가 분할된 것처럼 보여줄 뿐, 실제로는 분할 불가능 // 백엔드 처리(java,c계열언어)에서 가능
+        setTimeout(()=>{
+        //setTimeout : CALLBACK함수의 로직이 시간이 되면 전달되는 것
+        for(let i =0;i<10;i++){
+            console.log("Async thread.. for_2..", i);
+        }
+        console.log("for_2 종료..!");   //위의 반복문이 끝날 때까지 움직이지 않음! 끝나야 움직임
+        },5)   //10 = 0.01초 후에 전달됨/
+
+        
+        for(let i =0;i<10;i++){
+            console.log("main thread.. for_3..", i);
+        }
+        console.log("for_3 종료..!");   //위의 반복문이 끝날 때까지 움직이지 않음! 끝나야 움직임
+
+        
+
+    </script>
+</body>
+</html>

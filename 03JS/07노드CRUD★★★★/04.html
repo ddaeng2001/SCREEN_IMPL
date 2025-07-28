@@ -83,11 +83,36 @@
             //이벤트 처리 등록
             insertBtnEl.addEventListener('click', ()=>{
                 const text = insertEl.value;
+                //노드 생성 전 유효성 체크   
+                if(!isValid(text)){  
+                    //isValid가 전달하는 값 = True or False이기에 if문 필요
+                    //유효하지 않으면 False가 나와야하기 때문에 !필요
+                    return ; // 아래의 노드 생성 함수를 실행하지 않고 그냥 나감 // if문이든 while문이든 한 줄이면 {}생략 가능~
+                }
+
                 //container에 item 추가
                 createNode(text); //노드 생성 함수
                 insertEl.value="";   //입력값 초기화
             })
-            //노드추가 함수 생성(Hosting 적용)
+
+            //엔터키를 쳤을 때 이벤트 처리 등록
+            insertEl.addEventListener('keydown',(e)=>{
+                //console.log(e); //이벤트 확인
+
+                if(e.keyCode == 13) {
+                const text = insertEl.value;
+                if(!isValid(text)){  //유효하지 않으면 False가 나와야하기 때문에 !필요
+                    return ; // 아래의 노드 생성 함수를 실행하지 않고 그냥 나감 // if문이든 while문이든 한 줄이면 {}생략 가능~
+                }
+                //container에 item 추가
+                createNode(text); //노드 생성 함수
+                insertEl.value="";   //입력값 초기화
+            }
+            });
+
+
+
+            //노드추가 함수 생성(Hosting 적용)              노드를 추가할 때마다 이벤트 등록 필수
             function createNode(text){
                 //유효성 체크(데이터가 잘 들어왔다는 걸 확인하면 넣을 것이기 때문에)
 
@@ -99,6 +124,8 @@
                 const rightEl = document.createElement('div');
                 const aEl = document.createElement('a');
                 const spanEl = document.createElement('span');
+
+
                 //클래스 적용
                 itemEl.className='item';
                 leftEl.className='left';
@@ -107,10 +134,21 @@
 
                 //속성 추가
                 inputEl.setAttribute('readonly', true)
+                aEl.setAttribute('href','javascript:void(0)')   //a태그 속성 추가
 
                 //데이터 삽입
                 spanEl.innerHTML='delete';
                 inputEl.value=text;
+
+                //이벤트 추가
+                aEl.addEventListener('click',(e)=>{ //a태그를 클릭했을 때 삭제 이벤트 추가 >>for 상위노드인 .item 단위로 삭제해야함!!
+                    const itemEl = e.target.parentNode.parentNode.parentNode; // 결과 => .item이 나옴
+                                 //e.target == span태그
+                                            //.parentNode ==  상위 노드로 이동
+
+                    itemEl.remove(); //해당 노드 삭제
+                                        
+                });    
 
                 //노드 간 연결
                 leftEl.appendChild(inputEl);
@@ -122,6 +160,32 @@
                 containerEl.appendChild(itemEl);
                 //마지막에 넣은 게 제일 위에 할려면 containerEl.prepend(itemEl);
 
+
+                //유효성 검증 함수
+                function isValid(text){     //text == 입력한 값(외부값)
+                    const regex = /^[0-9]/;     //정규표현식 /^/로 시작 -> 정규표현식 함수 사용 가능
+                                 //첫번째 자리는 0-9 숫자만 입력 가능
+
+                    //공백여부 확인
+                    if(text.trim()===''){
+                            //.trim() : 입력한 문자의 앞뒤 공백을 제거
+                        //text에 입력한 값이 공백이거나 null이라면
+                        alert("내용을 입력하세요");
+                        return false;
+                    }
+
+                    if(regex.test(text)){
+                            //.test : 정규표현식 함수로서 검증
+                        alert("첫번째는 숫자를 입력할 수 없습니다");
+                        return false;
+
+                    }
+                    
+                    return true;
+                      
+                }
+
+                //상태값을 저장할려면 상태관리가 필요함(추후에 배울 것)
 
             }
          })

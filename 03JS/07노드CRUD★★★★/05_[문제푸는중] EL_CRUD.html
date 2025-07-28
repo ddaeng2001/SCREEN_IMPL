@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <!-- GOOGLE ICON -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        *{
+            font-size: 1rem;
+        }
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 300,
+          'GRAD' 0,
+          'opsz' 24;
+          font-size:1.5rem;
+        }
+        input{
+            height : 35px;
+        }
+        .btn{
+            width : 75px;
+            height : 35px;
+            border-radius: 5px;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        th,td{
+            width:50px;
+            height : 35px;
+            border : 1px solid;
+            margin : 2px;
+        }
+        th:nth-child(1),
+        td:nth-child(1)
+        {
+            width : 150px;
+        }
+        th:nth-child(3),
+        td:nth-child(3)
+        {
+            width : 700px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <form action="" name="joinForm" onsubmit="return false">
+        <input name="username" placeholder="이름을 입력하세요" >
+        <input name="age"  placeholder="나이를 입력하세요">
+        <input name="address" placeholder="주소를 입력하세요">
+        <button class="btn">입력</button>
+    </form>
+    <hr>
+    <table>
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>나이</th>
+                <th>주소</th>
+                <th>삭제</th>
+            </tr>   
+        </thead>
+        <tbody>
+
+        </tbody>
+        
+    </table>
+
+    </div>
+    <script>
+        //입력버튼을 눌렀을때 table의 tbody에 입력된 (이름/나이/주소/삭제버튼)이 생성될수 있도록합니다
+        //입력된 노드의 이름/나이/주소를 수정할수 있도록합니다.
+        //특정행의 삭제버튼을 클릭했을때 해당 행이 삭제 될수 있도록 합니다.
+        
+        //특정행의 위치를 위로이동/아래로 이동이 가능하도록 합니다(나중에)
+    window.addEventListener('DOMcontentLoaded',()=>{
+        const btnEl = document.querySelector('.btn');
+        const formEl = document.joinForm;
+        const usernameEl = formEl.username;
+        const ageEl = formEl.age;
+        const addressEl = formEl.address;
+        const tableBodyEl = document.querySelector('table tbody');
+
+        //입력버튼 클릭했을 때
+        btnEl.addEventListener('click',()=>{
+            const text = btnEl.value;
+            createNode(text);
+            btnEl.value="";
+        })
+
+        
+
+
+
+        //노드 추가 함수 생성
+        function createNode(text){
+            const btnEl = document.createElement('button')
+            const formEl = document.createElement('form')
+            const usernameEl = document.createElement('input');
+            const ageEl = document.createElement('input')
+            const addressEl = document.createElement('input')
+
+            const table = document.createElement('table')
+            const tr = document.createElement('tr')
+            const th1 = document.createElement('th')
+            const th2 = document.createElement('th')
+            const th3 = document.createElement('th')
+            const th4 = document.createElement('th')
+            const tableBodyEl = document.createElement('tbody')
+
+            //클래스 적용
+            btnEl.className='btn';
+
+            //속성 추가
+            usernameEl.setAttribute('readonly',true);
+            ageEl.setAttribute('readonly',true);
+            addressEl.setAttribute('readonly',true);
+
+            //데이터 삽입
+            th4.innerHTML='delete';
+            th1.value=text;
+            th2.value=text;
+            th3.value=text;
+
+
+            //노드 연결
+            
+            formEl.appendChild(usernameEl);
+            formEl.appendChild(ageEl);
+            formEl.appendChild(addressEl);
+            formEl.appendChild(btnEl);
+            table.appendchild(tr);
+            table.appendchild(tableBodyEl);
+            tr.appendChild(th1);
+            tr.appendChild(th2);
+            tr.appendChild(th3);
+            tr.appendChild(th4);
+            
+
+        }
+
+
+    })
+    </script>
+</body>
+</html>

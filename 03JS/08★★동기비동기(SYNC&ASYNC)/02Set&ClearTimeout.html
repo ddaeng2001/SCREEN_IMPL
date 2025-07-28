@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button onClick="start()">예약실행</button>
+    <button onClick="stop()">예약취소</button>
+    <hr/>
+    <div class="d1"></div>
+
+    <script>
+
+        let id=null;    //obj로 null삽입
+
+        //작업 흐름과 달리 다른 스레드가 동작 // 스레드가 생성되면 setTimeout에 스레드의 고유번호(id)가 가져와짐
+        //몇 초 후에 내용을 띄움
+        const start = ()=>{
+            const d1El = document.querySelector('.d1');
+            id=setTimeout(()=>{
+            //나눠진 스레드의 고유번호(id)를 받아옴
+                d1El.innerHTML='SETTIMEOUT RESULT..';
+            },3000);        //언제 실행할 건지 m/s단위로 지정 즉, 3000m/s-> 3초
+            console.log('id',id);   //실행할 때마다 id번호가 달라지는데 스레드가 그만큼 분할된 것
+        }       
+        
+        //해당 id를 제거처리
+        //제거할려면 고유번호(id)가 필요함
+        //비동기 분할에 대한 작업 종료를 위해서
+        const stop = ()=>{
+            clearTimeout(id);
+        }
+    </script>
+</body>
+</html>
