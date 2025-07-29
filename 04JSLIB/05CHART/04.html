@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Chartjs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="./경찰정지역별범죄발생건수.js"></script>
+
+</head>
+
+<body>
+
+
+    <script>
+        // console.log("ALL DATA",지역별범죄건수);
+
+        // const datas = 지역별범죄건수.data; -->지역별범죄건수는 이미 obj로 들어가있어서 .data 할 필요 X
+        const datas = 지역별범죄건수;
+
+        //item당 범죄대분류,범죄소분류를 제외한 값을 filter
+        //범죄대분류 : [서울:50,부산:21..]
+        const result = 
+        지역별범죄건수.reduce((resultObject,item)=>{
+            const {범죄대분류,범죄중분류,...rest} = item;   //obj 데이터를 분해시킬 수 있음 ==> 구조 분해 할당
+                    //키 값을 별도로 obj형태로 뽑아서 쓸 수 있음
+            const values = Object.values(rest);
+            const item_sum = values.reduce((sum,count)=>{return sum+count},0)
+            // console.log(범죄대분류,item_sum);
+            // return {범죄대분류,item_sum}    //중분류를 제외한
+            if(resultObject[범죄대분류]!==undefined){
+                resultObject[범죄대분류] += item_sum;
+            }else{
+                //처음 누적
+                resultObject[범죄대분류] = item_sum;
+            }
+            return resultObject;
+        },{})
+        console.log(result);
+
+    </script>
+
+
+
+     <script>
+
+        const ctx = document.getElementById('myChart');
+
+        const dataSet = [
+            {   //데이터는 순서에 맞게 그 위치의 값만 넣으면 됨
+                label: 'red',
+                data: [12, 0, 0, 0, 0, 0],
+                borderWidth: 1,
+                backgroundColor: 'red',
+                borderColor: '',
+
+            },
+            {
+                label: 'orange',
+                data: [0, 22, 0, 0, 0, 0],
+                borderWidth: 1,
+                backgroundColor: 'orange',
+                borderColor: '',
+
+            },
+            {
+                label: 'yellow',
+                data: [0, 0, 3, 0, 0, 0],
+                borderWidth: 1,
+                backgroundColor: 'yellow',
+                borderColor: '',
+
+            },
+            {
+                label: 'green',
+                data: [0, 0, 0, 30, 0, 0],
+                borderWidth: 1,
+                backgroundColor: 'green',
+                borderColor: '',
+
+            },
+            {
+                label: 'skyblue',
+                data: [0, 0, 0, 0, 17, 0],
+                borderWidth: 1,
+                backgroundColor: 'skyblue',
+                borderColor: '',
+
+            },
+            {
+                label: 'blue',
+                data: [0, 0, 0, 0, 0, 32],
+                borderWidth: 1,
+                backgroundColor: 'blue',
+                borderColor: '',
+
+            }
+        ]
+
+        const option = {
+            // line에 적용
+            // animations:{
+            //     tension:{
+            //         duration: 1000,
+            //         easing: 'linear',
+            //         from: 1,
+            //         to: 0,
+            //         loop: true,
+            //     }
+            // },
+            // bar에 적용
+            animation: {
+                delay: (el) => { return el.dataIndex * 500; },
+            },
+
+            scales: {
+                x: {
+                    stacked: true,
+
+                },
+                y: {
+                    beginAtZero: true,   //0부터 시작(기본값)
+                    // max:100,
+                    // min:0,
+                    // ticks:{
+                    //     stepSize:10     //y축 10씩 증가
+                    // }
+                },
+            },
+            onClick: (event, chartEl) => {    //Click이벤트 
+                // console.log(event);
+                console.log(chartEl);
+            }
+        }
+
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Object.keys(cat_count),     //key전체값 가져오기
+                datasets: [{
+                    label: 'COUNT',
+                    data: Object.values(cat_count), 
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        
+    </script>
+</body>
+
+</html>

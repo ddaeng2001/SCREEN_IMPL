@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- js에서 canvas(시각화할 때 중요하므로 한번 공부해보기~)를 통해 그림 그리는 효과를 낼 수 있음
+     id에 차트 관련 도형들을 적절히 그림 -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Chartjs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+</head>
+
+
+<body style="display:flex; justify-content: center; align-items: center; height:100vh">
+
+    <div style="width:800px;height:500px;">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+
+
+
+        const ctx = document.getElementById('myChart');
+
+        const dataSet = [
+            {   //데이터는 순서에 맞게 그 위치의 값만 넣으면 됨
+                label: 'red',
+                data: [12, 0, 0, 0, 0, 0],
+                borderWidth: 1,
+                backgroundColor: 'red',
+                borderColor: '',
+
+            },
+            {
+                label: 'orange',
+                data: [0, 22, 0, 0, 0, 0],
+                borderWidth: 1,
+                backgroundColor: 'orange',
+                borderColor: '',
+
+            },
+            {
+                label: 'yellow',
+                data: [0, 0, 3, 0, 0, 0],
+                borderWidth: 1,
+                backgroundColor: 'yellow',
+                borderColor: '',
+
+            },
+            {
+                label: 'green',
+                data: [0, 0, 0, 30, 0, 0],
+                borderWidth: 1,
+                backgroundColor: 'green',
+                borderColor: '',
+
+            },
+            {
+                label: 'skyblue',
+                data: [0, 0, 0, 0, 17, 0],
+                borderWidth: 1,
+                backgroundColor: 'skyblue',
+                borderColor: '',
+
+            },
+            {
+                label: 'blue',
+                data: [0, 0, 0, 0, 0, 32],
+                borderWidth: 1,
+                backgroundColor: 'blue',
+                borderColor: '',
+
+            }
+        ]
+
+        const option = {
+            // line에 적용
+            // animations:{
+            //     tension:{
+            //         duration: 1000,
+            //         easing: 'linear',
+            //         from: 1,
+            //         to: 0,
+            //         loop: true,
+            //     }
+            // },
+            // bar에 적용
+            animation : {
+                delay: (el)=>{return el.dataIndex*500;},
+            },
+
+            scales: {
+                x:{
+                    stacked:true,
+                    
+                },
+                y: {
+                    beginAtZero: true,   //0부터 시작(기본값)
+                    // max:100,
+                    // min:0,
+                    // ticks:{
+                    //     stepSize:10     //y축 10씩 증가
+                    // }
+                },
+            },
+            onClick : (event,chartEl)=>{    //Click이벤트 
+                // console.log(event);
+                console.log(chartEl);
+            }
+        }
+        
+
+        new Chart(ctx, {
+            type: 'bar',    //bar, line, pie, doughnut, bubble, scatter(산전도), heatmap... -> data set에 따라 다르나 왼쪽에 기입된 것들은 가능
+            data: {
+                labels: ['Red', 'Orange', 'Yellow', 'Green', 'Skyblue', 'Blue'],
+                datasets: dataSet,
+            },
+            options: option
+        });
+    </script>
+
+</body>
+
+</html>

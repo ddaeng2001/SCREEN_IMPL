@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Chartjs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="./js/중구맛집.js"></script>
+</head>
+
+<body style="display:flex; justify-content: center; align-items: center; height:100vh">
+
+    <div style="width:800px;height:500px;">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        //
+        console.log("ALL DATA", 중구맛집);
+        //
+        const datas = 중구맛집.data;
+        console.log("datas", datas);
+
+        //카테고리별 맛집 count 
+        const cat_count = datas.map((item) => { return item.FD_CS })   //카테고리 count에 배열형태로 FD_CS만 들어옴
+            .reduce((cat, item) => {   //{한식:100, 일식:55} 초기값이 obj형태 return되도록
+                if (cat[item] !== undefined)
+                    //cat안에 한식의 value값이 undefined이 아니라면, 즉, 데이터가 있다면
+                    cat[item]++;    // 기존의 값에서 카운팅을 더 올려줌
+                else
+                    cat[item] = 1;    //아니라면 처음은 1
+                return cat;
+            }, {})
+        console.log(cat_count);
+
+    </script>
+
+    <!-- Charjs -->
+    <script>
+
+        const ctx = document.getElementById('myChart');
+
+        const dataSet = [
+            {   //데이터는 순서에 맞게 그 위치의 값만 넣으면 됨
+                label: 'red',
+                data: [12, 0, 0, 0, 0, 0],
+                borderWidth: 1,
+                backgroundColor: 'red',
+                borderColor: '',
+
+            },
+            {
+                label: 'orange',
+                data: [0, 22, 0, 0, 0, 0],
+                borderWidth: 1,
+                backgroundColor: 'orange',
+                borderColor: '',
+
+            },
+            {
+                label: 'yellow',
+                data: [0, 0, 3, 0, 0, 0],
+                borderWidth: 1,
+                backgroundColor: 'yellow',
+                borderColor: '',
+
+            },
+            {
+                label: 'green',
+                data: [0, 0, 0, 30, 0, 0],
+                borderWidth: 1,
+                backgroundColor: 'green',
+                borderColor: '',
+
+            },
+            {
+                label: 'skyblue',
+                data: [0, 0, 0, 0, 17, 0],
+                borderWidth: 1,
+                backgroundColor: 'skyblue',
+                borderColor: '',
+
+            },
+            {
+                label: 'blue',
+                data: [0, 0, 0, 0, 0, 32],
+                borderWidth: 1,
+                backgroundColor: 'blue',
+                borderColor: '',
+
+            }
+        ]
+
+        const option = {
+            // line에 적용
+            // animations:{
+            //     tension:{
+            //         duration: 1000,
+            //         easing: 'linear',
+            //         from: 1,
+            //         to: 0,
+            //         loop: true,
+            //     }
+            // },
+            // bar에 적용
+            animation: {
+                delay: (el) => { return el.dataIndex * 500; },
+            },
+
+            scales: {
+                x: {
+                    stacked: true,
+
+                },
+                y: {
+                    beginAtZero: true,   //0부터 시작(기본값)
+                    // max:100,
+                    // min:0,
+                    // ticks:{
+                    //     stepSize:10     //y축 10씩 증가
+                    // }
+                },
+            },
+            onClick: (event, chartEl) => {    //Click이벤트 
+                // console.log(event);
+                console.log(chartEl);
+            }
+        }
+
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Object.keys(cat_count),     //key전체값 가져오기
+                datasets: [{
+                    label: 'COUNT',
+                    data: Object.values(cat_count), 
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
+
+<!--
+        ['한식','중식','한식',한식',...] 
+        카데고리 초기값 = {}obj  item=한식
+        
+        cat[key] == value값 확인 가능 -R:카테고리가 obj이기 때문에!
+        
+        cat={"한식":1,"중식":1}       item=한식
+         ->
