@@ -27,14 +27,14 @@
 
         //카테고리별 맛집 count 
         const cat_count = datas.map((item) => { return item.FD_CS })   //카테고리 count에 배열형태로 FD_CS만 들어옴
-            .reduce((cat, item) => {   //{한식:100, 일식:55} 초기값이 obj형태 return되도록
+            .reduce((cat, item) => {   
                 if (cat[item] !== undefined)
                     //cat안에 한식의 value값이 undefined이 아니라면, 즉, 데이터가 있다면
                     cat[item]++;    // 기존의 값에서 카운팅을 더 올려줌
                 else
-                    cat[item] = 1;    //아니라면 처음은 1
+                    cat[item] = 1;    //아니라면 처음 카운팅 1
                 return cat;
-            }, {})
+            }, {})      //초기값 자리 {}인 이유 :  {한식:100, 일식:55}와 초기값이 obj형태 return되도록
         console.log(cat_count);
 
     </script>
