@@ -1,0 +1,54 @@
+/* 모든 페이지 공통 적용 */
+/* 개별 스타일링은 파일 따로 생성 */
+:root{
+    font-size:16px;
+}
+*{box-sizing: border-box;}
+ul{list-style: none; padding: 0; margin: 0;}
+body{padding: 0; margin: 0;}
+a{text-decoration: none; color:black;}
+
+
+/*  */
+.wrapper{}
+.wrapper>header{}
+.wrapper>header>.top-header{}
+.wrapper>header>nav{}
+
+/*  */
+.wrapper>main{}
+.wrapper>main>section{}
+
+/*  */
+.wrapper>main>section.banner-block .carousel-control-prev,
+.wrapper>main>section.banner-block .carousel-control-next{
+    border : 5px solid white !important;
+    font-size: 2rem !important;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon
+{
+    width: 48px;
+    height: 48px;
+    /* background-color: red; */
+    border-radius: 50%;
+}
+
+/*  */
+.wrapper>main>section.card-block{
+    display: grid;  /*행렬 배치는 grid 쓰는 게 좋음*/
+    grid-template-columns: repeat(4, 1fr);      /*repeat 안 넣으면 수동으로 하나씩 넣어야함*/
+    /* border : 5px solid red; */
+    gap: 15px;      /*그리드마다 간격*/
+
+    /* */
+    place-items: center;        /*flex로도 대체 가능*/
+    padding : 50px 0;   /*위 아래 여백*/
+}
+
+.wrapper>main>section.navtab-block .tab-content{
+    min-height: 300px;
+}
+/*  */
+.wrapper>footer{}

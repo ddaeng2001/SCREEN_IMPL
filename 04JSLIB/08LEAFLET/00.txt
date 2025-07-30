@@ -1,0 +1,8 @@
+LEAFLET =a JavaScript library for interactive maps
+커스터마이징이 가능함
+지도스타일(한국으로 기준)
+마커 이벤트 -> 클러스터링
+검색(지오코더) -- 장소 검색(위도/경도값)
+
+카카오지도API 추천(초반)
+but, 커스터마이징으로서는 LEAFLET추천~
