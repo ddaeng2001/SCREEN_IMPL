@@ -1,0 +1,18 @@
+*{
+    box-sizing: border-box;
+}
+.top-header{
+    font-size: .8rem;
+    padding-right: 40px;
+}
+
+.navbar-brand mb-0 h1{
+    height: 600px;
+}
+.navigation {
+    color:black;
+}
+
+.carousel-item{
+
+}
