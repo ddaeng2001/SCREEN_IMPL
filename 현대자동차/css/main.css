@@ -1,31 +1,26 @@
-
-main{
-    width:100%;
+main {
+    width: 100%;
     height: 1000px;
-    /* position:relative; */
-    padding-top:80px;
-    display:flex;
+    padding-top: 140px;
+    display: flex;
     justify-content: center;
+    padding: 160px;
 
 }
 
-main>.wrapper-model{
-    background:gray;
+.wrapper-model {
+    background: gray;
     width: 70%;
 }
 
-main .model h2{
-    display:flex;
+.model h2 {
+    display: flex;
     justify-content: center;
-}
-main .model p{
-    display:flex;
-    justify-content: center;
-    padding-top:10px;
 }
 
-.wrapper-model img{
-    max-width: 100%;
-    height: auto;
-    display:block;
+.model p {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    position: relative;
 }
